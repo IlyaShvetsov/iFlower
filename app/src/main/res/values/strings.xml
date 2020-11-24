@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">iFlower</string>
+    <string name="title_search">Search</string>
+    <string name="title_photo">Photo</string>
+    <string name="title_profile">Profile</string>
+    <string name="title_settings">Settings</string>
+</resources>
