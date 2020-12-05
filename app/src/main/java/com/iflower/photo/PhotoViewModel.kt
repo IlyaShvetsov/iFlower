@@ -1,4 +1,4 @@
-package com.iflower.ui.profile
+package com.iflower.photo
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,10 +6,10 @@ import androidx.lifecycle.ViewModel
 
 
 
-class ProfileViewModel : ViewModel() {
+class PhotoViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is profile Fragment"
+        value = "This is photo Fragment"
     }
     val text: LiveData<String> = _text
 }

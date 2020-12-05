@@ -1,4 +1,4 @@
-package com.iflower.ui.settings
+package com.iflower.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,20 +12,18 @@ import com.iflower.R
 
 
 
-class SettingsFragment : Fragment() {
-
-    private lateinit var homeViewModel: SettingsViewModel
+class ProfileFragment : Fragment() {
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProvider(this).get(SettingsViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_search, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_profile, container, false)
+        val textView: TextView = root.findViewById(R.id.text_notifications)
+        profileViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

@@ -1,4 +1,4 @@
-package com.iflower.ui.settings
+package com.iflower.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

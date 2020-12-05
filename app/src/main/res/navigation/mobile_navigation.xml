@@ -8,25 +8,25 @@
 
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.iflower.ui.search.SearchFragment"
+        android:name="com.iflower.search.ui.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
 
     <fragment
         android:id="@+id/navigation_photo"
-        android:name="com.iflower.ui.photo.PhotoFragment"
+        android:name="com.iflower.photo.PhotoFragment"
         android:label="@string/title_photo"
         tools:layout="@layout/fragment_photo" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.iflower.ui.profile.ProfileFragment"
+        android:name="com.iflower.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 
     <fragment
         android:id="@+id/navigation_settings"
-        android:name="com.iflower.ui.settings.SettingsFragment"
+        android:name="com.iflower.settings.SettingsFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_settings" />
 
