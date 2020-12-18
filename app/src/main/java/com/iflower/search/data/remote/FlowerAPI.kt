@@ -9,7 +9,7 @@ import java.lang.reflect.Type
 
 
 
-object MyAPI {
+object FlowerAPI {
     private const val API_URL = "https://iflower-server.herokuapp.com"
 
     fun getFlowers(): List<Flower> {
