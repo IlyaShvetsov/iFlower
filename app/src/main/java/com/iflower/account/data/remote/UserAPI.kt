@@ -1,5 +1,6 @@
 package com.iflower.account.data.remote
 
+import com.iflower.account.data.model.User
 import okhttp3.*
 
 
@@ -16,6 +17,25 @@ object UserAPI {
 
         val request = Request.Builder()
                 .url("$API_URL/users/login")
+                .post(requestBody)
+                .build()
+
+        val response = OkHttpClient().newCall(request).execute()
+        return response.code() == 200
+    }
+
+    fun registration(user: User): Boolean {
+
+        val username = user.userName
+        val password = user.password
+
+        val requestBody = RequestBody.create(
+                MediaType.parse("application/json; charset=utf-8"),
+                "{\"username\": \"$username\", \"password\": \"$password\"}"
+        )
+
+        val request = Request.Builder()
+                .url("$API_URL/users/add")
                 .post(requestBody)
                 .build()
 

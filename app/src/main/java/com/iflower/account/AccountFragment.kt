@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.iflower.R
+import com.iflower.account.data.model.User
 import com.iflower.account.ui.AccountViewModel
 import com.iflower.account.ui.LoginFragment
 import com.iflower.account.ui.ProfileFragment
@@ -52,6 +53,10 @@ class AccountFragment : Fragment() {
             .replace(R.id.account_container, SignUpFragment())
             .addToBackStack(null)
             .commit()
+    }
+
+    fun createAccount(user: User) {
+        viewModel.registration(user)
     }
 
 }

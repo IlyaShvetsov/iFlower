@@ -19,6 +19,7 @@
                 android:background="@color/white">
 
                 <EditText
+                    android:id="@+id/username_edit_text"
                     style="@style/LoginSignUp1Input"
                     android:hint="Username" />
 
@@ -28,6 +29,7 @@
                     android:inputType="textEmailAddress" />
 
                 <EditText
+                    android:id="@+id/password_edit_text"
                     style="@style/LoginSignUp1Input"
                     android:hint="Password"
                     android:inputType="textPassword" />
