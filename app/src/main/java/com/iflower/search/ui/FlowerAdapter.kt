@@ -9,14 +9,13 @@ import com.iflower.search.ui.FlowerViewHolder
 
 
 
-class FlowerAdapter() : RecyclerView.Adapter<FlowerViewHolder>() {
-//    private val onClick : (Flower) -> Unit
+class FlowerAdapter(private val onClick : (Flower) -> Unit) : RecyclerView.Adapter<FlowerViewHolder>() {
     private val dataList: ArrayList<Flower> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlowerViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(R.layout.flower_item, parent, false)
-        return FlowerViewHolder(view) // , onClick
+        return FlowerViewHolder(view, onClick)
     }
 
     override fun onBindViewHolder(holder: FlowerViewHolder, position: Int) {

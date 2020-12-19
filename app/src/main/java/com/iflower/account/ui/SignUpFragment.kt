@@ -22,6 +22,7 @@ class SignUpFragment : Fragment() {
         root.findViewById<Button>(R.id.btnCreateAccount).setOnClickListener {
             val username = root.findViewById<EditText>(R.id.username_edit_text).text.toString()
             val password = root.findViewById<EditText>(R.id.password_edit_text).text.toString()
+            if (username == "" || password == "") return@setOnClickListener
             val user = User()
             user.userName = username
             user.password = password
