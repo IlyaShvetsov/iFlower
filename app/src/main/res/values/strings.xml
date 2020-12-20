@@ -4,4 +4,8 @@
     <string name="title_photo">Photo</string>
     <string name="title_profile">Profile</string>
     <string name="title_settings">Settings</string>
+
+    <string name="need_permission">Allow camera permission to use camera</string>
+    <string name="permission_in_settings">Allow camera permission in system settings</string>
+
 </resources>

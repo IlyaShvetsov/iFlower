@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -9,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.iflower"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -52,6 +53,13 @@ dependencies {
 
     implementation 'androidx.room:room-runtime:2.2.6'
     annotationProcessor 'androidx.room:room-compiler:2.2.6'
+
+    // CameraX core library
+    implementation "androidx.camera:camera-core:1.0.0-rc01"
+    // CameraX Camera2 extensions
+    implementation "androidx.camera:camera-camera2:1.0.0-rc01"
+    // CameraX View class
+    implementation 'androidx.camera:camera-view:1.0.0-alpha20'
 
     testImplementation 'junit:junit:4.13.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

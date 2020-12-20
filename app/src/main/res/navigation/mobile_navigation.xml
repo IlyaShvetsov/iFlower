@@ -14,9 +14,9 @@
 
     <fragment
         android:id="@+id/navigation_photo"
-        android:name="com.iflower.photo.PhotoFragment"
+        android:name="com.iflower.photo.PhotoMainFragment"
         android:label="@string/title_photo"
-        tools:layout="@layout/fragment_photo" />
+        tools:layout="@layout/fragment_main_photo" />
 
     <fragment
         android:id="@+id/navigation_profile"
