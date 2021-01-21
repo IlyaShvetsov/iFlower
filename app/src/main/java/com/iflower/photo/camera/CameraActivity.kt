@@ -87,6 +87,8 @@ class CameraActivity : AppCompatActivity(), ImageCapture.OnImageSavedCallback {
         this.photoFile = photoFile
         takePhotoButton.setOnClickListener {
             takePhotoButton.isEnabled = false
+            val intent = Intent(this, FlowerActivity::class.java)
+            startActivity(intent)
 //            camera.takePicture(photoFile, AsyncTask.SERIAL_EXECUTOR, this)
         }
     }

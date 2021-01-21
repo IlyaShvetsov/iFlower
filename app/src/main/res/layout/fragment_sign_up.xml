@@ -21,23 +21,24 @@
                 <EditText
                     android:id="@+id/username_edit_text"
                     style="@style/LoginSignUp1Input"
-                    android:hint="Username" />
+                    android:hint="Username"
+                    android:inputType="text" />
 
                 <EditText
                     style="@style/LoginSignUp1Input"
-                    android:hint="Email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                    android:hint="Email" />
 
                 <EditText
                     android:id="@+id/password_edit_text"
                     style="@style/LoginSignUp1Input"
-                    android:hint="Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:hint="Password" />
 
                 <EditText
                     style="@style/LoginSignUp1Input"
-                    android:hint="Confirm Password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:hint="Confirm Password" />
 
                 <Button
                     android:id="@+id/btnCreateAccount"

@@ -13,11 +13,8 @@ import com.iflower.search.data.model.Flower
 
 class FlowerFragment(private val flower: Flower) : Fragment() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
 
         val root = inflater.inflate(R.layout.fragment_flower, container, false)
         root.findViewById<TextView>(R.id.flower_name).text = flower.name
