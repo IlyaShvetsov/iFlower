@@ -16,6 +16,9 @@ class Flower(
     var name: String? = null,
 
     @ColumnInfo(name = "description")
-    var description: String? = null
+    var description: String? = null,
+
+    @ColumnInfo(name = "image")
+    var image: String? = null
 
 )
