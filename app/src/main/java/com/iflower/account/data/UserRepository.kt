@@ -26,7 +26,7 @@ class UserRepository(context: Context) {
         return try {
             val registrationIsSuccess = UserAPI.registration(user)
             if (registrationIsSuccess) {
-                userStorage.logIn()
+                userStorage.logIn(user.userName ?: "")
             } else {
                 indicatorRegister.postValue(indicatorRegister.value?.plus(1))
             }
@@ -44,7 +44,7 @@ class UserRepository(context: Context) {
         return try {
             val loginIsSuccess = UserAPI.login(username, password)
             if (loginIsSuccess) {
-                userStorage.logIn()
+                userStorage.logIn(username)
             } else {
                 indicatorLogin.postValue(indicatorLogin.value?.plus(1))
             }

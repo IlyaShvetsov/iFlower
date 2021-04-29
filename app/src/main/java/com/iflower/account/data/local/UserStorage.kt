@@ -7,24 +7,27 @@ import androidx.lifecycle.MutableLiveData
 
 class UserStorage(private val context: Context) {
     companion object {
-        private const val prefName = "userStoragePreferences"
+        const val prefName = "userStoragePreferences"
     }
 
     var loggedIn = MutableLiveData<Boolean>().apply {
-        val preferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
-        value = preferences.getBoolean("loggedIn", false)
+        value = context.getSharedPreferences(prefName, Context.MODE_PRIVATE).getBoolean("loggedIn", false)
     }
 
-    fun logIn() {
+    fun logIn(userName: String) {
         context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
-                .edit().putBoolean("loggedIn", true).apply()
+                .edit().putBoolean("loggedIn", true).putString("username", userName).apply()
         loggedIn.postValue(true)
     }
 
     fun logOut() {
         context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
-                .edit().putBoolean("loggedIn", false).apply()
+                .edit().putBoolean("loggedIn", false).putString("username", "").apply()
         loggedIn.postValue(false)
+    }
+
+    fun getUsername(): String {
+        return context.getSharedPreferences(prefName, Context.MODE_PRIVATE).getString("username", "") ?: ""
     }
 
 }
