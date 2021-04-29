@@ -6,7 +6,7 @@ import okhttp3.*
 
 
 object UserAPI {
-    private const val API_URL = "https://iflower-server.herokuapp.com"
+    private const val API_URL = "http://130.193.49.85:8090/iflower"
 
     fun login(username: String, password: String): Boolean {
 

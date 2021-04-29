@@ -5,26 +5,25 @@ import androidx.lifecycle.MutableLiveData
 
 
 
-object UserStorage {
-
-//    val preferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
-//    val editor = preferences.edit()
-//    val lastNumber = preferences.getInt("lastNumber", 0) + 1
-//    editor.putInt("lastNumber", lastNumber)
-//    val fileName = context.filesDir.absolutePath + "/record_$lastNumber.mp3"
-//    editor.putString(fileName, getCurrentTime())
-//    editor.apply()
-
+class UserStorage(private val context: Context) {
+    companion object {
+        private const val prefName = "userStoragePreferences"
+    }
 
     var loggedIn = MutableLiveData<Boolean>().apply {
-        value = false
+        val preferences = context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+        value = preferences.getBoolean("loggedIn", false)
     }
 
     fun logIn() {
+        context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+                .edit().putBoolean("loggedIn", true).apply()
         loggedIn.postValue(true)
     }
 
     fun logOut() {
+        context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
+                .edit().putBoolean("loggedIn", false).apply()
         loggedIn.postValue(false)
     }
 

@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import com.iflower.R
 import com.iflower.account.AccountFragment
-import com.iflower.account.data.remote.UserAPI
 
 
 
@@ -28,11 +27,15 @@ class LoginFragment : Fragment() {
         root.findViewById<Button>(R.id.btnSignIn).setOnClickListener {
             val username = root.findViewById<TextView>(R.id.username_edit_text).text.toString()
             val password = root.findViewById<TextView>(R.id.password_edit_text).text.toString()
+            if (username == "") {
+                Snackbar.make(root, "Enter username", Snackbar.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
+            if (password == "") {
+                Snackbar.make(root, "Enter password", Snackbar.LENGTH_LONG).show()
+                return@setOnClickListener
+            }
             (parentFragment as AccountFragment).signIn(username, password)
-        }
-
-        root.findViewById<Button>(R.id.btnSignFacebook).setOnClickListener {
-            Snackbar.make(root, "We will add this function later", Snackbar.LENGTH_LONG).show()
         }
 
         return root

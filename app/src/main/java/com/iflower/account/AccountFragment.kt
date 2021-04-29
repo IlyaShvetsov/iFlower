@@ -9,10 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.snackbar.Snackbar
 import com.iflower.R
 import com.iflower.account.data.model.User
-import com.iflower.account.ui.AccountViewModel
-import com.iflower.account.ui.LoginFragment
-import com.iflower.account.ui.ProfileFragment
-import com.iflower.account.ui.SignUpFragment
+import com.iflower.account.ui.*
 
 
 
@@ -28,7 +25,8 @@ class AccountFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProvider(this).get(AccountViewModel::class.java)
+        viewModel = ViewModelProvider(this, AccountModelFactory(requireContext()))
+                .get(AccountViewModel::class.java)
         viewModel.loggedIn.observe(this, {
             val fragment = if (it) ProfileFragment() else LoginFragment()
             childFragmentManager
@@ -36,23 +34,32 @@ class AccountFragment : Fragment() {
                     .replace(R.id.account_container, fragment)
                     .commit()
         })
-        viewModel.indicator.observe(this, {
+        viewModel.indicatorLogin.observe(this, {
             if (it > 0) {
                 root?.let { it1 -> Snackbar.make(it1, "Incorrect login or password", Snackbar.LENGTH_LONG).show() }
             }
         })
+        viewModel.indicatorRegister.observe(this, {
+            if (it > 0) {
+                root?.let { it1 -> Snackbar.make(it1, "User already exist", Snackbar.LENGTH_LONG).show() }
+            }
+        })
+    }
+
+    fun signUp() {
+        childFragmentManager
+                .beginTransaction()
+                .replace(R.id.account_container, SignUpFragment())
+                .addToBackStack(null)
+                .commit()
     }
 
     fun signIn(userName: String, password: String) {
         viewModel.login(userName, password)
     }
 
-    fun signUp() {
-        childFragmentManager
-            .beginTransaction()
-            .replace(R.id.account_container, SignUpFragment())
-            .addToBackStack(null)
-            .commit()
+    fun logout() {
+        viewModel.logout()
     }
 
     fun createAccount(user: User) {

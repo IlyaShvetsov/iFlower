@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.iflower.R
+import com.iflower.account.AccountFragment
 import com.iflower.account.data.local.UserStorage
 
 
@@ -17,11 +18,9 @@ class ProfileFragment : Fragment() {
                               savedInstanceState: Bundle?): View? {
 
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
-
         root.findViewById<Button>(R.id.btn_logout).setOnClickListener {
-            UserStorage.logOut()
+            (parentFragment as AccountFragment).logout()
         }
-
         return root
     }
 
