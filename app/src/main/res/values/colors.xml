@@ -14,4 +14,10 @@
     <color name="loginSignupText">#FF636363</color>
     <color name="loginSignupInputBg">#FFF1F5F8</color>
 
+    <color name="tfe_color_primary">#37BB37</color>
+    <color name="tfe_color_primary_dark">#37BB37</color>
+    <color name="tfe_color_accent">#425066</color>
+
+    <color name="tfe_semi_transparent">#66000000</color>
+
 </resources>

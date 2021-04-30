@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.iflower.R
-import com.iflower.photo.camera.CameraActivity
+import org.tensorflow.lite.examples.classification.ClassifierActivity
 
 
 
@@ -20,7 +20,7 @@ class PhotoMainFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_main_photo, container, false)
 
         root.findViewById<Button>(R.id.btn_photo).setOnClickListener {
-            val intent = Intent(requireContext(), CameraActivity::class.java)
+            val intent = Intent(requireContext(), ClassifierActivity::class.java)
             startActivity(intent)
         }
 

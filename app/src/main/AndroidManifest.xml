@@ -24,8 +24,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".photo.camera.CameraActivity" />
-        <activity android:name=".photo.camera.FlowerActivity" />
+        <activity
+            android:name="org.tensorflow.lite.examples.classification.ClassifierActivity"
+            android:label="@string/tfe_ic_app_name"/>
 
     </application>
 
