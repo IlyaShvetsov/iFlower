@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/profile_about"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textColor="@color/black"
         app:layout_constraintTop_toBottomOf="@id/text_username"
         app:layout_constraintBottom_toBottomOf="parent"
