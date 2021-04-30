@@ -11,7 +11,7 @@ import java.lang.reflect.Type
 
 
 object FlowerAPI {
-    private const val API_URL = "https://iflower-server.herokuapp.com"
+    const val API_URL = "http://130.193.49.85:8090/iflower"
 
     fun getFlowers(): List<Flower> {
         val request = Request.Builder()
@@ -22,15 +22,6 @@ object FlowerAPI {
 
         val listFlower: Type = object : TypeToken<List<Flower?>?>() {}.type
         return Gson().fromJson(responseBody, listFlower)
-    }
-
-    fun getImage(name: String): ResponseBody? {
-        val url = "$API_URL/images/download?name=$name"
-        val request = Request.Builder()
-                .url(url)
-                .build()
-        val response = OkHttpClient().newCall(request).execute()
-        return response.body()
     }
 
 }
