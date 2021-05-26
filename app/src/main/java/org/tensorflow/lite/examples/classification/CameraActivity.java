@@ -41,6 +41,9 @@ import org.tensorflow.lite.examples.classification.tflite.Classifier.Model;
 import org.tensorflow.lite.examples.classification.tflite.Classifier.Recognition;
 
 import java.nio.ByteBuffer;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class CameraActivity extends AppCompatActivity
@@ -78,10 +81,40 @@ public abstract class CameraActivity extends AppCompatActivity
     private Model model = Model.FLOAT_MOBILENET;
     private Device device = Device.CPU;
     private int numThreads = -1;
+    private List<String> flowerNames = new ArrayList<>();
+
+    private void initFlowerList() {
+        Collections.addAll(flowerNames,
+                "pink primrose", "hard-leaved pocket orchid", "canterbury bells",
+                "sweet pea", "english marigold", "tiger lily", "moon orchid",
+                "bird of paradise", "monkshood", "globe thistle", "snapdragon",
+                "colt's foot", "king protea", "spear thistle", "yellow iris",
+                "globe-flower", "purple coneflower", "peruvian lily", "balloon flower",
+                "giant white arum lily", "fire lily", "pincushion flower", "fritillary",
+                "red ginger", "grape hyacinth", "corn poppy", "prince of wales feathers",
+                "stemless gentian", "artichoke", "sweet william", "carnation",
+                "garden phlox", "love in the mist", "mexican aster", "alpine sea holly",
+                "ruby-lipped cattleya", "cape flower", "great masterwort", "siam tulip",
+                "lenten rose", "barbeton daisy", "daffodil", "sword lily", "poinsettia",
+                "bolero deep blue", "wallflower", "marigold", "buttercup", "oxeye daisy",
+                "common dandelion", "petunia", "wild pansy", "primula", "sunflower",
+                "pelargonium", "bishop of llandaff", "gaura", "geranium", "orange dahlia",
+                "pink-yellow dahlia?", "cautleya spicata", "japanese anemone",
+                "black-eyed susan", "silverbush", "californian poppy", "osteospermum",
+                "spring crocus", "bearded iris", "windflower", "tree poppy", "gazania",
+                "azalea", "water lily", "rose", "thorn apple", "morning glory",
+                "passion flower", "lotus", "toad lily", "anthurium", "frangipani",
+                "clematis", "hibiscus", "columbine", "desert-rose", "tree mallow",
+                "magnolia", "cyclamen", "watercress", "canna lily", "hippeastrum",
+                "bee balm", "ball moss", "foxglove", "bougainvillea", "camellia", "mallow",
+                "mexican petunia", "bromelia", "blanket flower", "trumpet creeper",
+                "blackberry lily");
+    }
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         LOGGER.d("onCreate " + this);
+        initFlowerList();
         super.onCreate(null);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -410,7 +443,9 @@ public abstract class CameraActivity extends AppCompatActivity
         if (results != null && results.size() >= 3) {
             Recognition recognition = results.get(0);
             if (recognition != null) {
-                if (recognition.getTitle() != null) recognitionTextView.setText(recognition.getTitle());
+                if (recognition.getTitle() != null) {
+                    recognitionTextView.setText(flowerNames.get(Integer.parseInt(recognition.getTitle())-1));
+                }
                 if (recognition.getConfidence() != null)
                     recognitionValueTextView.setText(
                             String.format("%.2f", (100 * recognition.getConfidence())) + "%");
@@ -418,7 +453,9 @@ public abstract class CameraActivity extends AppCompatActivity
 
             Recognition recognition1 = results.get(1);
             if (recognition1 != null) {
-                if (recognition1.getTitle() != null) recognition1TextView.setText(recognition1.getTitle());
+                if (recognition1.getTitle() != null) {
+                    recognition1TextView.setText(flowerNames.get(Integer.parseInt(recognition1.getTitle())-1));
+                }
                 if (recognition1.getConfidence() != null)
                     recognition1ValueTextView.setText(
                             String.format("%.2f", (100 * recognition1.getConfidence())) + "%");
@@ -426,7 +463,9 @@ public abstract class CameraActivity extends AppCompatActivity
 
             Recognition recognition2 = results.get(2);
             if (recognition2 != null) {
-                if (recognition2.getTitle() != null) recognition2TextView.setText(recognition2.getTitle());
+                if (recognition2.getTitle() != null) {
+                    recognition2TextView.setText(flowerNames.get(Integer.parseInt(recognition2.getTitle())-1));
+                }
                 if (recognition2.getConfidence() != null)
                     recognition2ValueTextView.setText(
                             String.format("%.2f", (100 * recognition2.getConfidence())) + "%");
