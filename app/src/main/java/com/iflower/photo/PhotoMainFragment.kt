@@ -23,15 +23,14 @@ class PhotoMainFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_main_photo, container, false)
 
         root.findViewById<Button>(R.id.btn_photo).setOnClickListener {
-            val loggedIn = requireContext()
-                    .getSharedPreferences(UserStorage.prefName, Context.MODE_PRIVATE)
-                    .getBoolean("loggedIn", false)
-            if (loggedIn) {
-                val intent = Intent(requireContext(), ClassifierActivity::class.java)
-                startActivity(intent)
-            } else {
-                Snackbar.make(root, "Пожалуйста, авторизуйтесь в приложении", Snackbar.LENGTH_LONG).show()
-            }
+//            val loggedIn = requireContext()
+//                    .getSharedPreferences(UserStorage.prefName, Context.MODE_PRIVATE)
+//                    .getBoolean("loggedIn", false)
+//            if (loggedIn) {
+                startActivity(Intent(requireContext(), ClassifierActivity::class.java))
+//            } else {
+//                Snackbar.make(root, "Пожалуйста, авторизуйтесь в приложении", Snackbar.LENGTH_LONG).show()
+//            }
         }
 
         return root
