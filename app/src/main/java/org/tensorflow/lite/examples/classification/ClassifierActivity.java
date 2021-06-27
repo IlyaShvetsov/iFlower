@@ -25,14 +25,8 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
     private static final Size DESIRED_PREVIEW_SIZE = new Size(640, 480);
     private static final float TEXT_SIZE_DIP = 10;
     private Bitmap rgbFrameBitmap = null;
-    private long lastProcessingTimeMs;
     private Integer sensorOrientation;
     private Classifier classifier;
-    private BorderedText borderedText;
-    /** Input image size of the model along x axis. */
-    private int imageSizeX;
-    /** Input image size of the model along y axis. */
-    private int imageSizeY;
 
     @Override
     protected int getLayoutId() {
@@ -49,7 +43,7 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
         final float textSizePx =
                 TypedValue.applyDimension(
                         TypedValue.COMPLEX_UNIT_DIP, TEXT_SIZE_DIP, getResources().getDisplayMetrics());
-        borderedText = new BorderedText(textSizePx);
+        BorderedText borderedText = new BorderedText(textSizePx);
         borderedText.setTypeface(Typeface.MONOSPACE);
 
         recreateClassifier(getModel(), getDevice(), getNumThreads());
@@ -75,10 +69,9 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
         runInBackground(
                 () -> {
                     if (classifier != null) {
-                        final long startTime = SystemClock.uptimeMillis();
+                        SystemClock.uptimeMillis();
                         final List<Classifier.Recognition> results =
                                 classifier.recognizeImage(rgbFrameBitmap, sensorOrientation);
-                        lastProcessingTimeMs = SystemClock.uptimeMillis() - startTime;
                         LOGGER.v("Detect: %s", results);
 
                         runOnUiThread(
@@ -87,18 +80,6 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
                     }
                     readyForNextImage();
                 });
-    }
-
-    @Override
-    protected void onInferenceConfigurationChanged() {
-        if (rgbFrameBitmap == null) {
-            // Defer creation until we're getting camera frames.
-            return;
-        }
-        final Device device = getDevice();
-        final Model model = getModel();
-        final int numThreads = getNumThreads();
-        runInBackground(() -> recreateClassifier(model, device, numThreads));
     }
 
     private void recreateClassifier(Model model, Device device, int numThreads) {
@@ -114,15 +95,8 @@ public class ClassifierActivity extends CameraActivity implements OnImageAvailab
         } catch (IOException | IllegalArgumentException e) {
             LOGGER.e(e, "Failed to create classifier.");
             runOnUiThread(
-                    () -> {
-                        Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    });
-            return;
+                    () -> Toast.makeText(this, e.getMessage(), Toast.LENGTH_LONG).show());
         }
-
-        // Updates the input image size.
-        imageSizeX = classifier.getImageSizeX();
-        imageSizeY = classifier.getImageSizeY();
     }
 
 }

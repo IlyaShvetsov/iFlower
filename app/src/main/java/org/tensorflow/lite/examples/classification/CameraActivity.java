@@ -24,7 +24,6 @@ import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.WindowManager;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +41,6 @@ import org.tensorflow.lite.examples.classification.tflite.Classifier.Recognition
 
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -62,12 +60,11 @@ public abstract class CameraActivity extends AppCompatActivity
     private HandlerThread handlerThread;
     private boolean useCamera2API;
     private boolean isProcessingFrame = false;
-    private byte[][] yuvBytes = new byte[3][];
+    private final byte[][] yuvBytes = new byte[3][];
     private int[] rgbBytes = null;
     private int yRowStride;
     private Runnable postInferenceCallback;
     private Runnable imageConverter;
-    private LinearLayout bottomSheetLayout;
     private LinearLayout gestureLayout;
     protected TextView recognitionTextView,
             recognition1TextView,
@@ -75,13 +72,11 @@ public abstract class CameraActivity extends AppCompatActivity
             recognitionValueTextView,
             recognition1ValueTextView,
             recognition2ValueTextView;
-    private ImageView plusImageView, minusImageView;
-//    private TextView threadsTextView;
 
     private Model model = Model.FLOAT_MOBILENET;
     private Device device = Device.CPU;
     private int numThreads = -1;
-    private List<String> flowerNames = new ArrayList<>();
+    private final List<String> flowerNames = new ArrayList<>();
 
     private void initFlowerList() {
         Collections.addAll(flowerNames,
@@ -99,7 +94,7 @@ public abstract class CameraActivity extends AppCompatActivity
                 "bolero deep blue", "wallflower", "marigold", "buttercup", "oxeye daisy",
                 "common dandelion", "petunia", "wild pansy", "primula", "sunflower",
                 "pelargonium", "bishop of llandaff", "gaura", "geranium", "orange dahlia",
-                "pink-yellow dahlia?", "cautleya spicata", "japanese anemone",
+                "pink-yellow dahlia", "cautleya spicata", "japanese anemone",
                 "black-eyed susan", "silverbush", "californian poppy", "osteospermum",
                 "spring crocus", "bearded iris", "windflower", "tree poppy", "gazania",
                 "azalea", "water lily", "rose", "thorn apple", "morning glory",
@@ -126,7 +121,6 @@ public abstract class CameraActivity extends AppCompatActivity
             requestPermission();
         }
 
-        bottomSheetLayout = findViewById(R.id.bottom_sheet_layout);
         gestureLayout = findViewById(R.id.gesture_layout);
 
         ViewTreeObserver vto = gestureLayout.getViewTreeObserver();
@@ -492,8 +486,6 @@ public abstract class CameraActivity extends AppCompatActivity
     protected abstract int getLayoutId();
 
     protected abstract Size getDesiredPreviewFrameSize();
-
-    protected abstract void onInferenceConfigurationChanged();
 
     @Override
     public void onClick(View v) {}
