@@ -54,6 +54,7 @@ import java.util.concurrent.TimeUnit;
  *
  * <p>Instantiated by newInstance.</p>
  */
+@SuppressLint("ValidFragment")
 @SuppressWarnings("FragmentNotInstantiable")
 public class CameraConnectionFragment extends Fragment {
     private static final Logger LOGGER = new Logger();

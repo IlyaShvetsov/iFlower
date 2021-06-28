@@ -4,28 +4,57 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/photo_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/imageGuidelineTop"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/camera_about"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toTopOf="@+id/btn_photo"
+        app:layout_constraintGuide_percent=".15"
+        android:orientation="horizontal" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@mipmap/roses"
+        app:layout_constraintTop_toTopOf="@id/imageGuidelineTop"
+        app:layout_constraintBottom_toBottomOf="@id/imageGuideline"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/imageGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintGuide_percent=".55"
+        android:orientation="horizontal" />
 
     <Button
         android:id="@+id/btn_photo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="24dp"
+        android:text="Распознавание \n по фото"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/btn_real_time"
+        app:layout_constraintEnd_toEndOf="@id/btn_real_time"
+        app:layout_constraintStart_toStartOf="@id/btn_real_time" />
+
+    <Button
+        android:id="@+id/btn_real_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_margin="24dp"
-        android:text="Use camera"
+        android:layout_margin="32dp"
+        android:text="Распознавание в режиме\n реального времени"
+        android:textAllCaps="false"
+        android:textSize="20sp"
+        android:textColor="@color/black"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
