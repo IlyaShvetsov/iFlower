@@ -9,6 +9,7 @@ import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.iflower.R
 import org.tensorflow.lite.examples.classification.ClassifierActivity
+import org.tensorflow.lite.examples.classification.my.TakePhotoActivity
 
 
 
@@ -24,7 +25,7 @@ class PhotoMainFragment : Fragment() {
         }
 
         root.findViewById<Button>(R.id.btn_photo).setOnClickListener {
-//            startActivity(Intent(requireContext(), ClassifierActivity::class.java))
+            startActivity(Intent(requireContext(), TakePhotoActivity::class.java))
         }
 
         return root

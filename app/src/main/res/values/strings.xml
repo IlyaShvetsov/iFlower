@@ -44,15 +44,7 @@
         \nshvetsov.ilya@yandex.ru :)
     </string>
 
-    <string name="camera_about">
-        Далее вы можете использовать камеру своего телефона для того, чтобы узнать вид вашего растения.
-        \nДля классификации изображения используется сложный алгоритм. Он позволяет узнать вид растения
-        с высокой точностью. Но, к сожалению, алгоритм пока умеет распознавать не все виды растений.
-        Мы очень стараемся и скоро это исправим :)
-        \n\nДля начала работы авторизуйтесь в приложении и нажмите на кнопку ниже
-    </string>
-
-    <string name="tfe_ic_app_name" translation_description="Image Classification demo app [CHAR_LIMIT=40]">TFL Classify</string>
+    <string name="tfe_ic_app_name" translation_description="Image Classification demo app [CHAR_LIMIT=40]">Classify</string>
     <string name="tfe_ic_camera_error" translation_description="Error regarding camera support[CHAR_LIMIT=40]">This device doesn\'t support Camera2 API.</string>
     <string name="tfe_ic_gpu_quant_error" translation_description="Error regarding GPU support for Quant models[CHAR_LIMIT=60]">GPU does not yet supported quantized models.</string>
     <string name="tfe_ic_model" translatable="false">Model:</string>
